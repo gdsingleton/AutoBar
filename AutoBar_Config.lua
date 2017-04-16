@@ -190,7 +190,20 @@ function AutoBar_Config_ButtonSetTooltip()
 				message = message.."\nCombat only.";
 			end
 			if (AutoBar_Category_Info[buttoninfo].location) then
-				message = message.."\nLocation: "..AutoBar_Category_Info[buttoninfo].location..".";
+				if (type(AutoBar_Category_Info[buttoninfo].location) == "table") then
+					local location = ""
+					for i = 1, getn(AutoBar_Category_Info[buttoninfo].location) do
+						if (i == 1) then
+							location = AutoBar_Category_Info[buttoninfo].location[i]
+						else
+							location = location..", "..AutoBar_Category_Info[buttoninfo].location[i]
+						end
+					end
+					message = message.."\nLocation: "..location..".";
+					--message = message.."\nLocation: "..AutoBar_Category_Info[buttoninfo].location[1]..".";
+				else
+					message = message.."\nLocation: "..AutoBar_Category_Info[buttoninfo].location..".";
+				end
 			end
 			if (AutoBar_Category_Info[buttoninfo].limit) then
 				message = message.."\nLimited Usage: ";
@@ -620,6 +633,7 @@ end
 
 function AutoBar_Options_CheckBox_Setup()
 	AutoBar_Options_Bar_DockingMainBarText:SetText("Docked to Main Menu");
+	AutoBar_Options_Bar_DockingScreenText:SetText("Docked to Screen");
 	AutoBar_Options_Bar_WidthHeightLockedText:SetText("Lock Button Height\nand Width Together");
 	AutoBar_Options_Bar_ReverseButtonsText:SetText("Reverse Buttons");
 	AutoBar_Options_Bar_HideKeyTextText:SetText("Hide Keybinding Text");
@@ -662,6 +676,10 @@ function AutoBar_Options_CheckBox_OnCheck()
 	if (this:GetChecked()) then
 		if (button == "AutoBar_Options_Bar_DockingMainBar") then
 			AutoBar_Config[AutoBar_Player].display.docking = "MAINMENU";
+			AutoBar_Options_Bar_DockingScreen:SetChecked(false);
+		elseif (button == "AutoBar_Options_Bar_DockingScreen") then
+			AutoBar_Config[AutoBar_Player].display.docking = "SCREEN";
+			AutoBar_Options_Bar_DockingMainBar:SetChecked(false);
 		elseif (button == "AutoBar_Options_Bar_WidthHeightLocked") then
 			AutoBar_Config[AutoBar_Player].display.unlockbuttonratio = nil;
 		elseif (button == "AutoBar_Options_Bar_ReverseButtons") then
@@ -675,6 +693,8 @@ function AutoBar_Options_CheckBox_OnCheck()
 		end
 	else
 		if (button == "AutoBar_Options_Bar_DockingMainBar") then
+			AutoBar_Config[AutoBar_Player].display.docking = nil;
+		elseif (button == "AutoBar_Options_Bar_DockingScreen") then
 			AutoBar_Config[AutoBar_Player].display.docking = nil;
 		elseif (button == "AutoBar_Options_Bar_WidthHeightLocked") then
 			AutoBar_Config[AutoBar_Player].display.unlockbuttonratio = 1;

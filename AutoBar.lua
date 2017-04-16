@@ -11,6 +11,13 @@
 --  WOWSaien@gmail.com
 --  http://64.168.251.69/wow
 --
+--  Updated: moh aka Evion at Kronos
+--  moh@yutsuku.net
+--
+--  2017.04.17
+--    Docking to bottom of the screen is now avaiable
+--    PvP potions (Superior Healing Draught, Major Healing Draught) will now be useable as potions
+--      in Alterac Valley, Arathi Basin and Warsong Gluch at same time
 --  2006.03.31
 --    Minor category changes
 --  2006.02.10
@@ -40,7 +47,7 @@
 --    Release of complete re-write.
 --
 
-AUTOBAR_VERSION = "2006.02.10" -- Notice the cleverly disguised date.
+AUTOBAR_VERSION = "2017.04.17" -- Notice the cleverly disguised date.
 ------------------------------------
 BINDING_HEADER_AUTOBAR_SEP = "Auto Bar";
 BINDING_NAME_AUTOBAR_CONFIG = "Configuration Window";
@@ -161,6 +168,21 @@ local function AutoBar_BuildItemList()
 	end
 end
 
+local function IsWrongZone(obj)
+	local Zone = GetZoneText()
+	if (type(obj) == "table") then
+		local wrongZone = true
+		for i = 1, table.getn(obj), 1 do
+			if (obj[i] == Zone) then
+				wrongZone = false
+			end
+		end
+		return wrongZone
+	else
+		return obj ~= Zone
+	end
+end
+
 function AutoBar_Button_GetDisplayItem(buttonnum)
 	local idx, bag, slot, rank, itemid, category, categoryidx, acceptable, cooldowntime, level;
 	local cooldownidx, start, duration, enable, fallback;
@@ -197,8 +219,8 @@ function AutoBar_Button_GetDisplayItem(buttonnum)
 			idx = idx - 1;
 		elseif (level > UnitLevel("player")) then
 			idx = idx - 1;
-		elseif (AutoBar_Category_Info[category] and AutoBar_Category_Info[category].location and AutoBar_Category_Info[category].location ~= GetZoneText()) then
-			idx = idx - 1;
+		elseif (AutoBar_Category_Info[category] and AutoBar_Category_Info[category].location and IsWrongZone(AutoBar_Category_Info[category].location)--[[AutoBar_Category_Info[category].location ~= GetZoneText()]]) then
+				idx = idx - 1;
 		elseif (AutoBar_Category_Info[category]) then
 			if (not fallback) then 
 				fallback = idx; 
@@ -745,6 +767,19 @@ function AutoBar_SetupVisual()
 	if (AutoBar_Config[AutoBar_Player].display.docking) then
 		if (AutoBar_Config[AutoBar_Player].display.docking == "MAINMENU") then
 			AutoBar:SetPoint("BOTTOMLEFT","MainMenuBarArtFrame","BOTTOMLEFT",546+dockshiftx,38+dockshifty);
+		elseif (AutoBar_Config[AutoBar_Player].display.docking == "SCREEN") then
+			do
+				buttons = 0
+				maxbuttons = AUTOBAR_MAXBUTTONS
+				if AutoBar_Config[AutoBar_Player].display.showemptybuttons then maxbuttons = columns end
+				for buttonidx = 1, maxbuttons, 1 do
+					if (AutoBar_Config[AutoBar_Player].display.showemptybuttons or AutoBar_Buttons_CurrentItems[buttonidx]) then
+						buttons = buttons + 1
+					end
+				end
+				AutoBar:SetWidth( (buttons * buttonwidth) + (buttons + gapping) );
+			end
+			AutoBar:SetPoint("BOTTOM","UIParent","BOTTOM",dockshiftx,38+dockshifty);
 		else
 			AutoBar_Config[AutoBar_Player].display.docking = nil;
 		end

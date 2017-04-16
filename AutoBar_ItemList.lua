@@ -84,9 +84,9 @@ AutoBar_Category_Info = { -- global
 		["limit"] = { ["downhp"] = { 700 } },
 	},
 	["ALTERAC_HEAL"] = {
-		["description"] = "Alterac Heal Potions";
+		["description"] = "PvP Heal Potions";
 		["texture"] = "INV_Potion_39";
-		["location"] = ALTERACVALLEY;
+		["location"] = {ALTERACVALLEY, ARATHIBASIN, WARSONGGULCH};
 		["items"] = {
 			17349,	-- Superior Healing Draught
 			17348,	-- Major Healing Draught

@@ -94,7 +94,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			<!--
 			<AbsDimension x="575" y="480"/>
 			-->
-			<AbsDimension x="600" y="280"/>
+			<AbsDimension x="600" y="310"/>
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER"/>
@@ -299,7 +299,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			</Frame>
 			<Frame name="$parent_Bar" inherits="OptionFrameBoxTemplate">
 				<Size>
-					<AbsDimension x="1" y="155"/>
+					<AbsDimension x="1" y="185"/>
 				</Size>
 				<Anchors>
 					<Anchor point="BOTTOMLEFT">
@@ -424,9 +424,18 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 							</Anchor>
 						</Anchors>
 					</CheckButton>
+					<CheckButton name="$parent_DockingScreen" inherits="AutoBar_Options_CheckBoxTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_DockingMainBar">
+								<Offset>
+									<AbsDimension x="0" y="5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
 					<Slider name="$parent_DockShiftX" inherits="OptionsSliderTemplate">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parent_DockingMainBar" relativePoint="BOTTOMLEFT">
+							<Anchor point="TOPLEFT" relativeTo="$parent_DockingScreen" relativePoint="BOTTOMLEFT">
 								<Offset>
 									<AbsDimension x="10" y="-18"/>
 								</Offset>

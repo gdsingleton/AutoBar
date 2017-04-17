@@ -644,6 +644,11 @@ function AutoBar_Options_CheckBox_Setup()
 	else
 		AutoBar_Options_Bar_DockingMainBar:SetChecked(0);
 	end
+	if (AutoBar_Config[AutoBar_Player].display.docking == "SCREEN") then
+		AutoBar_Options_Bar_DockingScreen:SetChecked(1);
+	else
+		AutoBar_Options_Bar_DockingScreen:SetChecked(0);
+	end
 	if (AutoBar_Config[AutoBar_Player].display.unlockbuttonratio) then
 		AutoBar_Options_Bar_WidthHeightLocked:SetChecked(0);
 	else

@@ -350,6 +350,7 @@ end
 local function AutoBar_AssignButtons()
 	local displayButton = 0;
 	local buttonidx, buttoninfo, rankidx, items;
+
 	for buttonidx = 1, AUTOBAR_MAXBUTTONS, 1 do
 		if (AutoBar_Config[AutoBar_Player].display.showemptybuttons or AutoBar_Buttons_CurrentItems[buttonidx]) then
 			displayButton = displayButton + 1;
@@ -360,6 +361,30 @@ local function AutoBar_AssignButtons()
 	for buttonidx = displayButton+1, AUTOBAR_MAXBUTTONS, 1 do
 		local button = getglobal("AutoBar_Button"..buttonidx);
 		button.effectiveButton = nil;
+	end
+	
+	if (AutoBar_Config[AutoBar_Player].display 
+	and AutoBar_Config[AutoBar_Player].display.docking 
+	and AutoBar_Config[AutoBar_Player].display.docking == "SCREEN")
+	then
+		do
+			buttons = 0;
+			buttonwidth = AutoBar_Config[AutoBar_Player].display.buttonwidth or 36;
+			gapping = AutoBar_Config[AutoBar_Player].display.gapping or 6;
+			columns = AutoBar_Config[AutoBar_Player].display.columns or 6;
+			dockshiftx = AutoBar_Config[AutoBar_Player].display.dockshiftx or 0;
+			dockshifty = AutoBar_Config[AutoBar_Player].display.dockshifty or 0;
+			maxbuttons = AUTOBAR_MAXBUTTONS;
+			
+			if AutoBar_Config[AutoBar_Player].display.showemptybuttons then maxbuttons = columns end
+			for buttonidx = 1, maxbuttons, 1 do
+				if (AutoBar_Config[AutoBar_Player].display.showemptybuttons or AutoBar_Buttons_CurrentItems[buttonidx]) then
+					buttons = buttons + 1;
+				end
+			end
+			AutoBar:SetWidth( (buttons * buttonwidth) + (buttons + gapping) );
+		end
+		AutoBar:SetPoint("BOTTOM","UIParent","BOTTOM",dockshiftx,38+dockshifty);
 	end
 	AutoBar_Button_UpdateButtons();
 end

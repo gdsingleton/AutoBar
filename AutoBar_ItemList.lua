@@ -558,6 +558,9 @@ AutoBar_Category_Info["FOOD"].items = {
 		8957,	-- Spinefin Halibut		-- Vendor  - Level 45, heals 2148
 		13935,	-- Baked Salmon			-- Cooking - Level 45, heals 2148
 		13933,	-- Lobster Stew			-- Cooking - Level 45, heals 2148
+		19996,	-- Harvest Fish			-- Object - heals 2%
+		19995,	-- Harvest Boar			-- Object - heals 2%
+		19994,	-- Harvest Fruit		-- Object - heals 2%
 };
 AutoBar_Category_Info["FOOD_STAMINA"].items = {
 		6888,	-- Herb Baked Egg	-- Cooking - Level 1, heals 61, stamina/spirit

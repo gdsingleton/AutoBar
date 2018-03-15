@@ -10,6 +10,7 @@
 local ALTERACVALLEY = "Alterac Valley";
 local WARSONGGULCH = "Warsong Gulch";
 local ARATHIBASIN = "Arathi Basin";
+local AHNQIRAJ = "Ahn'Qiraj";
 
 if (GetLocale() == "frFR") then
 	ALTERACVALLEY = "Vall\195\169e d'Alterac";
@@ -334,6 +335,12 @@ AutoBar_Category_Info = { -- global
 	["MOUNTS_SPECIAL"] = {
 		["description"] = "Mount: Special";
 		["texture"] = "Ability_Mount_JungleTiger";
+		["noncombat"] = true,
+	},
+	["MOUNTS_AHNQIRAJ"] = {
+		["description"] = "Mount: Ahn'Qiraj";
+		["location"] = AHNQIRAJ;
+		["texture"] = "INV_Misc_QirajiCrystal_05";
 		["noncombat"] = true,
 	},
 	--------------
@@ -795,5 +802,12 @@ AutoBar_Category_Info["MOUNTS_SPECIAL"].items = {
 		19030,	-- Elite: Alterac Valley Ram
 		19872,	-- Elite: ZG Raptor
 		19902,	-- Elite: ZG Tiger
+};
+AutoBar_Category_Info["MOUNTS_AHNQIRAJ"].items = {
+		21176,	-- Black
+		21321,	-- Red
+		21324,	-- Yellow
+		21218,	-- Blue
+		21323,	-- Green
 };
 

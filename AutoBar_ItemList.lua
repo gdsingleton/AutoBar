@@ -497,6 +497,7 @@ AutoBar_Category_Info["FOOD_CONJURED"].items = {
 		1487,	-- Conjured Pumpernickel 	-- Mage    - Level 25, heals 874
 		8075,	-- Conjured Sourdough		-- Mage    - Level 35, heals 1392
 		8076,	-- Conjured Sweet Roll		-- Mage    - Level 45, heals 2148
+		22895,	-- Conjured Cinnamon Roll	-- Mage    - Level 55, heals 3180
 };
 AutoBar_Category_Info["FOOD"].items = {
 		2070,	-- Darnassian Bleu		-- Vendor  - Level 1, heals 61

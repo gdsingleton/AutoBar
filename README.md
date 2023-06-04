@@ -1,4 +1,4 @@
-AutoBar - a World of Warcraft (1.12.1) AddOn (modification)
+AutoBar - a World of Warcraft (1.12.1) AddOn (NycterMoon)
 ====================================
 
 Installation:

@@ -761,7 +761,8 @@ AutoBar_Category_Info["MOUNTS_TAUREN"].items = {
 };
 AutoBar_Category_Info["MOUNTS_HUMAN"].items = {
 		2414, 	-- Pinto
-		5414,	-- Black Stallion
+		-- 5414,	-- Black Stallion
+		2411,	-- Black Stallion
 		5655,	-- Chestnut Mare
 		5656,	-- Brown Horse
 		18776,	-- Elite: Swift Palamino
@@ -802,6 +803,27 @@ AutoBar_Category_Info["MOUNTS_SPECIAL"].items = {
 		19030,	-- Elite: Alterac Valley Ram
 		19872,	-- Elite: ZG Raptor
 		19902,	-- Elite: ZG Tiger
+		-- NycterMoon
+		112055,	-- Torta
+		112054,	-- Shadowmere
+		112053,	-- Blazeclaw
+		112052,	-- Ivory
+		112051,	-- Crimson
+		112050,	-- Ash
+		112049,	-- Snow
+		112048,	-- Shadow
+		112047,	-- Jetstream
+		112046,	-- Snowtide
+		112045,	-- Silverwind
+		112044,	-- Palomino
+		112043,	-- Nightsaber
+		112042,	-- Frostsaber
+		112041,	-- Gilded Stalker
+		112040,	-- Tawny Sabercat
+		112039,	-- Dawnsaber
+		112038,	-- Primal Leopard
+		100010,	-- Bengal Tiger
+		100002,	-- King Tiger
 };
 AutoBar_Category_Info["MOUNTS_AHNQIRAJ"].items = {
 		21176,	-- Black
